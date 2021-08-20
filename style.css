@@ -27,7 +27,10 @@
 }
 .banner-heading {
   margin-bottom: 50px;
-  height: 30px;
+  overflow: hidden;
+  animation: fade 1s 1s forwards;
+  opacity: 0;
+  visibility: hidden;
 }
 .banner-heading span {
   font-family: "Oswald", sans-serif;
@@ -36,7 +39,12 @@
   text-transform: uppercase;
   color: #fff;
   box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.5);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 40px;
 }
+
 .banner-paragraph {
   font-size: 40px;
   line-height: 40px;
@@ -48,6 +56,19 @@
   margin: 120px auto 60px auto;
   padding: 15px 0;
   box-shadow: 15px 15px 60px rgb(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  animation: fade 1s 1.5s forwards;
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 .banner-btn {
   background: linear-gradient(
@@ -65,4 +86,23 @@
   border: 2px solid #800505;
   box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.5);
   text-shadow: 5px 5px 10px rgb(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  animation: fade 1s 2s forwards;
+  position: relative;
+  overflow: hidden;
+}
+.banner-btn::before {
+  content: "";
+  width: 100%;
+  background: linear-gradient(to right, transparent, #fff, transparent);
+  position: absolute;
+  left: -100%;
+  top: 0;
+  height: 100%;
+  transform: skewX(-30deg);
+  transition: left 0.5s;
+}
+.banner-btn:hover::before {
+  left: 100%;
 }
